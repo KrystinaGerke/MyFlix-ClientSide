@@ -10,7 +10,7 @@ export function RegistrationView(props) {
       e.preventDefault();
       console.log(username, password);
       /* Send a request to the server for authentication */
-      props.RegistrationView(username);
+      props.handleRegistration(username);
     };
   
     return (

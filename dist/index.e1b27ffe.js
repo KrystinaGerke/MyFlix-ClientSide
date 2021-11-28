@@ -24667,15 +24667,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
-) // MovieCard.propTypes = {
- //     movie: PropTypes.shape({
- //       Title: PropTypes.string.isRequired,
- //       Description: PropTypes.string.isRequired,
- //       ImagePath: PropTypes.string.isRequired
- //     }).isRequired,
- //     onMovieClick: PropTypes.func.isRequired
- //   };
-;
+);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -24697,6 +24689,14 @@ class MovieCard extends _reactDefault.default.Component {
         }));
     }
 }
+MovieCard.propTypes = {
+    movie: PropTypes.shape({
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string.isRequired
+    }).isRequired,
+    onMovieClick: PropTypes.func.isRequired
+};
 
   $parcel$ReactRefreshHelpers$6989.postlude(module);
 } finally {
@@ -24873,7 +24873,7 @@ function RegistrationView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, password);
-        /* Send a request to the server for authentication */ props.RegistrationView(username);
+        /* Send a request to the server for authentication */ props.handleRegistration(username);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
         __source: {
