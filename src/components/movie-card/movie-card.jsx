@@ -20,8 +20,4 @@ let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
       </Card>
     );
   }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
