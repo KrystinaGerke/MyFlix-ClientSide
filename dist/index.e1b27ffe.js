@@ -25503,6 +25503,7 @@ var _formCheckLabelDefault = parcelHelpers.interopDefault(_formCheckLabel);
 var _formContext = require("./FormContext");
 var _formContextDefault = parcelHelpers.interopDefault(_formContext);
 var _themeProvider = require("./ThemeProvider");
+var _elementChildren = require("./ElementChildren");
 var _jsxRuntime = require("react/jsx-runtime");
 const FormCheck = /*#__PURE__*/ _react.forwardRef(({ id , bsPrefix , bsSwitchPrefix , inline =false , disabled =false , isValid =false , isInvalid =false , feedbackTooltip =false , feedback , feedbackType , className , style , title ='' , type ='checkbox' , label , children , // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 as ='input' , ...props }, ref)=>{
@@ -25516,7 +25517,7 @@ as ='input' , ...props }, ref)=>{
         controlId,
         id
     ]);
-    const hasLabel = label != null && label !== false && !children;
+    const hasLabel = !children && label != null && label !== false || _elementChildren.hasChildOfType(children, _formCheckLabelDefault.default);
     const input = /*#__PURE__*/ _jsxRuntime.jsx(_formCheckInputDefault.default, {
         ...props,
         type: type === 'switch' ? 'checkbox' : type,
@@ -25530,7 +25531,7 @@ as ='input' , ...props }, ref)=>{
         value: innerFormContext,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
             style: style,
-            className: _classnamesDefault.default(className, label && bsPrefix, inline && `${bsPrefix}-inline`, type === 'switch' && bsSwitchPrefix),
+            className: _classnamesDefault.default(className, hasLabel && bsPrefix, inline && `${bsPrefix}-inline`, type === 'switch' && bsSwitchPrefix),
             children: children || /*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
                 children: [
                     input,
@@ -25554,7 +25555,7 @@ exports.default = Object.assign(FormCheck, {
     Label: _formCheckLabelDefault.default
 });
 
-},{"classnames":"2cVcN","react":"4mchR","./Feedback":"3l6gp","./FormCheckInput":"fNTQv","./FormCheckLabel":"lyWnd","./FormContext":"axYdK","./ThemeProvider":"oG7Uz","react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"3l6gp":[function(require,module,exports) {
+},{"classnames":"2cVcN","react":"4mchR","./Feedback":"3l6gp","./FormCheckInput":"fNTQv","./FormCheckLabel":"lyWnd","./FormContext":"axYdK","./ThemeProvider":"oG7Uz","react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./ElementChildren":"eqDHF"}],"3l6gp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -25700,7 +25701,48 @@ const FormCheckLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix , className ,
 FormCheckLabel.displayName = 'FormCheckLabel';
 exports.default = FormCheckLabel;
 
-},{"classnames":"2cVcN","react":"4mchR","./FormContext":"axYdK","./ThemeProvider":"oG7Uz","react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"3iZ43":[function(require,module,exports) {
+},{"classnames":"2cVcN","react":"4mchR","./FormContext":"axYdK","./ThemeProvider":"oG7Uz","react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"eqDHF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "map", ()=>map
+);
+parcelHelpers.export(exports, "forEach", ()=>forEach
+);
+parcelHelpers.export(exports, "hasChildOfType", ()=>hasChildOfType
+);
+var _react = require("react");
+/**
+ * Iterates through children that are typically specified as `props.children`,
+ * but only maps over children that are "valid elements".
+ *
+ * The mapFunction provided index will be normalised to the components mapped,
+ * so an invalid component would not increase the index.
+ *
+ */ function map(children, func) {
+    let index = 0;
+    return _react.Children.map(children, (child)=>/*#__PURE__*/ _react.isValidElement(child) ? func(child, index++) : child
+    );
+}
+/**
+ * Iterates through children that are "valid elements".
+ *
+ * The provided forEachFunc(child, index) will be called for each
+ * leaf child with the index reflecting the position relative to "valid components".
+ */ function forEach(children, func) {
+    let index = 0;
+    _react.Children.forEach(children, (child)=>{
+        if (/*#__PURE__*/ _react.isValidElement(child)) func(child, index++);
+    });
+}
+/**
+ * Finds whether a component's `children` prop includes a React element of the
+ * specified type.
+ */ function hasChildOfType(children, type) {
+    return _react.Children.toArray(children).some((child)=>/*#__PURE__*/ _react.isValidElement(child) && child.type === type
+    );
+}
+
+},{"react":"4mchR","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"3iZ43":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
