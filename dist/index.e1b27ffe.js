@@ -22779,13 +22779,13 @@ class MainView extends _reactDefault.default.Component {
         };
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://myflix-kg.herokuapp.com/movies').then((response)=>{
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
             this.setState({
-                movies: response.data
+                user: localStorage.getItem('user')
             });
-        }).catch((error)=>{
-            console.log(error);
-        });
+            this.getMovies(accessToken);
+        }
     }
     setSelectedMovie(newSelectedMovie1) {
         this.setState({
@@ -22822,7 +22822,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 78,
+                lineNumber: 76,
                 columnNumber: 31
             },
             __self: this
@@ -22831,7 +22831,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 80,
+                lineNumber: 78,
                 columnNumber: 45
             },
             __self: this,
@@ -22841,7 +22841,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 83,
+                lineNumber: 81,
                 columnNumber: 17
             },
             __self: this,
@@ -22849,7 +22849,7 @@ class MainView extends _reactDefault.default.Component {
                 md: 8,
                 __source: {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 86,
+                    lineNumber: 84,
                     columnNumber: 23
                 },
                 __self: this,
@@ -22860,7 +22860,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 87,
+                        lineNumber: 85,
                         columnNumber: 25
                     },
                     __self: this
@@ -22869,7 +22869,7 @@ class MainView extends _reactDefault.default.Component {
                     md: 3,
                     __source: {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 91,
+                        lineNumber: 89,
                         columnNumber: 23
                     },
                     __self: this,
@@ -22880,7 +22880,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 92,
+                            lineNumber: 90,
                             columnNumber: 25
                         },
                         __self: this
@@ -26358,7 +26358,7 @@ function LoginView(props) {
     const [password, setPassword] = _react.useState('');
     const handleSubmit = (e)=>{
         e.preventDefault();
-        /* Send a request to the server for authentication */ _axiosDefault.default.post('YOUR_API_URL/login', {
+        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://myflix-kg.herokuapp.com/login', {
             Username: username,
             Password: password
         }).then((response)=>{

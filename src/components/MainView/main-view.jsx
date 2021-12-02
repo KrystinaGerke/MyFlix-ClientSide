@@ -22,17 +22,15 @@ export class MainView extends React.Component {
           }
         }
 
-        componentDidMount(){
-            axios.get('https://myflix-kg.herokuapp.com/movies')
-              .then(response => {
-                this.setState({
-                  movies: response.data
-                });
-              })
-              .catch(error => {
-                console.log(error);
-              });
+        componentDidMount() {
+          let accessToken = localStorage.getItem('token');
+          if (accessToken !== null) {
+            this.setState({
+              user: localStorage.getItem('user')
+            });
+            this.getMovies(accessToken);
           }
+        }
       
         setSelectedMovie(newSelectedMovie) {
             this.setState({
