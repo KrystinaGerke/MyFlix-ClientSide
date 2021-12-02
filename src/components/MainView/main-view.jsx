@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 import { RegistraionView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
@@ -42,11 +45,31 @@ export class MainView extends React.Component {
 
           /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
 
-            onLoggedIn(user) {
-                this.setState({
-                user
-                });
-            }
+          onLoggedIn(authData) {
+            console.log(authData);
+            this.setState({
+              user: authData.user.Username
+            });
+          
+            localStorage.setItem('token', authData.token);
+            localStorage.setItem('user', authData.user.Username);
+            this.getMovies(authData.token);
+          }
+
+          getMovies(token) {
+            axios.get('https://myflix-kg.herokuapp.com/movies', {
+              headers: { Authorization: `Bearer ${token}`}
+            })
+            .then(response => {
+              // Assign the result to the state
+              this.setState({
+                movies: response.data
+              });
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          }
         
           render() {
             const { movies, selectedMovie, user } = this.state;
@@ -57,15 +80,21 @@ export class MainView extends React.Component {
             if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
           
             return (
-              <div className="main-view">
-                {selectedMovie
-                  ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-                  : movies.map(movie => (
-                    <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-                  ))
-                }
-              </div>
-            );
+                <Row className="main-view justify-content-md-center">
+                  {selectedMovie
+                    ? (
+                      <Col md={8}>
+                        <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+                      </Col>
+                    )
+                    : movies.map((movie, i) => (
+                      <Col key={i} md={3}>
+                        <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+                      </Col>
+                    ))
+                  }
+                </Row>
+              );
           }
 }
 
