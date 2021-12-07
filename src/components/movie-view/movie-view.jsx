@@ -36,6 +36,12 @@ let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
+        <Link to={`/movies/directors/${movie.Director.Name}`}>
+          <Button variant="link">Director</Button>
+        </Link>
+        <Link to={`/moveis/genres/${movie.Genre.Name}`}>
+          <Button variant="link">Genre</Button>
+        </Link>
         <Button onClick={() => { onBackClick(null); }}>Back</Button>
        </div>
     );
