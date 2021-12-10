@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 import './profile-view.scss';
 
@@ -17,6 +17,7 @@ export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick })
         /* Send a request to the server for authentication */
         props.handleRegistration(username);
       };
+const token = localStorage.getItem("token");
 
       axios.put(`https://myflix-kg.herokuapp.com/users/${user.Username}`, {
         Username: username,
@@ -47,13 +48,33 @@ export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick })
             console.error(err)
             });
         }
-
+const favoriteMovies = props.movies.map(movie => user.FavoriteMovies.includes(movie._id));
 
 return (
-    <container>
+    <Container>
+<Form>
+        <label>
+          Username:
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        </label>
+        <label>
+          Password:
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        </label>
+        <label>
+          Email:
+          <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+        </label>
+        <label>
+          Birthday:
+          <input type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
+        </label>
+        <button type="submit" onClick={handleSubmit}>Update</button>
+      </Form>
+          <Button>Deregister</Button>
+       
 
-
-    </container>
+    </Container>
 
 )
 

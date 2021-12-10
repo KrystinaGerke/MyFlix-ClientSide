@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
@@ -39,7 +40,7 @@ let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
         <Link to={`/movies/directors/${movie.Director.Name}`}>
           <Button variant="link">Director</Button>
         </Link>
-        <Link to={`/moveis/genres/${movie.Genre.Name}`}>
+        <Link to={`/movies/genre/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
         </Link>
         <Button onClick={() => { onBackClick(null); }}>Back</Button>
