@@ -13,7 +13,7 @@ export function RegistrationView(props) {
       console.log(username, password);
       /* Send a request to the server for authentication */
       props.handleRegistration(username);
-    };
+  
   
     axios.post('https://myflix-kg.herokuapp.com/users', {
       Username: username,
@@ -29,7 +29,7 @@ export function RegistrationView(props) {
     .catch(e => {
       console.log('error registering the user')
     });
-
+  };
     return (
       <form>
         <label>
