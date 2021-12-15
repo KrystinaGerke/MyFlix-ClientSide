@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import { Card, Button } from 'react-bootstrap';
 import './genre-view.scss';
 
 export class GenreView extends React.Component {
@@ -19,21 +19,18 @@ export class GenreView extends React.Component {
 
     render() {
         const { genre, onBackClick } = this.props;
-        
+
 console.log(genre);
     return (
-      <div className="movie-view">
-          <h1>Genre View</h1>
-        <div className="movie-title">
-          {/* <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span> */}
-        </div>
-        <div className="director-info">
-          <span className="label">Genre Info: </span>
-          <span className="value">{genre.Name}</span>
-        </div>
-        <Button onClick={() => { onBackClick(null); }}>Back</Button>
-       </div>
+      <Card className="text-center">
+      <Card.Header as="h5">Genre Overview</Card.Header>
+      <Card.Body>
+        <Card.Title>Genre: {genre.Name}</Card.Title>
+        <Card.Text>{genre.Description}</Card.Text>
+        <Button variant="outline-dark" onClick={() => { onBackClick(null); }}>Back</Button>
+       </Card.Body>
+       </Card> 
     );
   }
 }
+

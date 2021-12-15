@@ -69,9 +69,9 @@ return (
           Birthday:
           <input type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
         </label>
-        <button type="submit" onClick={handleSubmit}>Update</button>
+        <Button type="submit" onClick={handleSubmit}>Update</Button>
       </Form>
-          <Button>Deregister</Button>
+          <Button variant = "danger">Deregister</Button>
        
 
     </Container>

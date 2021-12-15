@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
@@ -24,7 +24,25 @@ export class MovieView extends React.Component {
 let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
 
     return (
-      <div className="movie-view">
+      <Card className="text-center" style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={movie.ImageURL} />
+      <Card.Body>
+        <Card.Title>Movie: {movie.Title}</Card.Title>
+        <Card.Text>Description: {movie.Description}</Card.Text>
+        <Link to={`/movies/directors/${movie.Director.Name}`}>
+          <Button variant="outline-dark">Director</Button>{' '}
+        </Link>
+        <Link to={`/movies/genre/${movie.Genre.Name}`}>
+          <Button variant="outline-dark">Genre</Button>{' '}
+        </Link>
+        <Button variant="outline-dark" onClick={() => { onBackClick(null); }}>Back</Button>
+      </Card.Body>
+    </Card>
+    );
+  }
+}
+
+{/* <div className="movie-view">
           <h1>Movie View</h1>
         <div className="movie-poster">
           <img src={ImageURL} />
@@ -38,13 +56,10 @@ let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
           <span className="value">{movie.Description}</span>
         </div>
         <Link to={`/movies/directors/${movie.Director.Name}`}>
-          <Button variant="link">Director</Button>
+          <Button variant="outline-dark">Director</Button>{' '}
         </Link>
         <Link to={`/movies/genre/${movie.Genre.Name}`}>
-          <Button variant="link">Genre</Button>
+          <Button variant="outline-dark">Genre</Button>{' '}
         </Link>
-        <Button onClick={() => { onBackClick(null); }}>Back</Button>
-       </div>
-    );
-  }
-}
+        <Button variant="outline-dark" onClick={() => { onBackClick(null); }}>Back</Button>
+       </div> */}

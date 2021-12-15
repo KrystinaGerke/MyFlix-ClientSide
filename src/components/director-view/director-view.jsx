@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import { Card, Button } from 'react-bootstrap';
 import './director-view.scss';
 
 export class DirectorView extends React.Component {
@@ -21,18 +21,14 @@ export class DirectorView extends React.Component {
         const { director, onBackClick } = this.props;
 console.log(director);
     return (
-      <div className="movie-view">
-          <h1>Director View</h1>
-        <div className="movie-title">
-          {/* <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span> */}
-        </div>
-        <div className="director-info">
-          <span className="label">Director Bio: </span>
-          <span className="value">{director.Name}</span>
-        </div>
-        <Button onClick={() => { onBackClick(null); }}>Back</Button>
-       </div>
+        <Card className="text-center">
+      <Card.Header as="h5">Director Overview</Card.Header>
+      <Card.Body>
+        <Card.Title>Director: {director.Name}</Card.Title>
+        <Card.Text>{director.Bio}</Card.Text>
+        <Button variant="outline-dark" onClick={() => { onBackClick(null); }}>Back</Button>
+       </Card.Body>
+       </Card>
     );
   }
 }
