@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -23,19 +25,24 @@ export function LoginView(props) {
   };
 
 return (
+  <Container>
   <Form>
-    <Form.Group controlId="formUsername">
+    <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
       <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
     </Form.Group>
 
-    <Form.Group controlId="formPassword">
+    <Form.Group className="mb-3" controlId="formPassword">
       <Form.Label>Password:</Form.Label>
       <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
     </Form.Group>
-    <Button variant="primary" type="submit" onClick={handleSubmit}>
-      Submit
-    </Button>
+    <Button variant="outline-dark" type="submit" onClick={handleSubmit}>
+      Login
+    </Button>{' '}
+    <Link className="mb-3" to={`/users`}>
+    <Button variant="outline-dark">Register</Button>
+</Link>
   </Form>
+</Container>
 );
 }

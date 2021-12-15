@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { RegistraionView } from '../registration-view/registration-view';
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from "../movie-view/movie-view";

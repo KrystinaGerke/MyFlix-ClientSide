@@ -3,6 +3,7 @@ import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 import './profile-view.scss';
 
+
 export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -52,30 +53,79 @@ const favoriteMovies = props.movies.map(movie => user.FavoriteMovies.includes(mo
 
 return (
     <Container>
-<Form>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Birthday:
-          <input type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        </label>
-        <Button type="submit" onClick={handleSubmit}>Update</Button>
-      </Form>
-          <Button variant = "danger">Deregister</Button>
-       
+<>
+<Form.Floating className="mb-3"> 
+        <label htmlFor="floatingUsernameCustom">Username</label>
+        <Form.Control
+          id="floatingUsernameCustom"
+          type="username"
+          placeholder="Username123"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+      </Form.Floating>
 
+      <Form.Floating className="mb-3">
+      <label htmlFor="floatingInputCustom">Email address</label>
+        <Form.Control
+          id="floatingInputCustom"
+          type="email"
+          placeholder="name@example.com"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+      </Form.Floating>
+      
+      <Form.Floating className="mb-3">
+      <label htmlFor="floatingPasswordCustom">Password</label>
+        <Form.Control
+          id="floatingPasswordCustom"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+      </Form.Floating>
+    
+      <Form.Floating className="mb-3">
+      <label htmlFor="floatingBirthdayCustom">Birthday</label>
+        <Form.Control
+          id="floatingBirthdayCustom"
+          type="birthday"
+          placeholder="05/25/1990"
+          value={birthday} 
+          onChange={e => setBirthday(e.target.value)}
+        />
+      </Form.Floating>
+      <Button variant="outline-dark" type="submit" onClick={handleSubmit}>Update</Button>
+
+          <Button variant = "outline-danger" onClick={deleteUserHandler}>Deregister</Button>
+    
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>De-Register</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to permenantly delete your account?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Whoops-Nevermind
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Deregister
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      </>
     </Container>
 
 )
 
 }
+
+
+// function DeleteProfile() {
+//     const [show, setShow] = useState(false);
+  
+//     const handleClose = () => setShow(false);
+//     const handleShow = () => setShow(true);

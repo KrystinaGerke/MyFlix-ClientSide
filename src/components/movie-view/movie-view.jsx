@@ -35,6 +35,7 @@ let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
         <Link to={`/movies/genre/${movie.Genre.Name}`}>
           <Button variant="outline-dark">Genre</Button>{' '}
         </Link>
+        <Button variant="outline-dark" >Add to Favorites</Button>
         <Button variant="outline-dark" onClick={() => { onBackClick(null); }}>Back</Button>
       </Card.Body>
     </Card>
