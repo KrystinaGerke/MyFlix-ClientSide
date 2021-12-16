@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Navbar, Container, Nav } from 'react-bootstrap';
+import './main-view.scss';
 
+import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { RegistrationView } from '../registration-view/registration-view';
@@ -21,7 +23,8 @@ export class MainView extends React.Component {
             movies: [],
             selectedMovie: null,
             register: null,
-            user: null
+            user: null,
+            favoriteMovies: []
           }
         }
 
@@ -35,11 +38,16 @@ export class MainView extends React.Component {
           }
         }
 
+        addToFavoriteMovies = (id) =>{
+          this.setState({favoriteMovies:[...this.state.favoriteMovies, id]})
+        }
+
           /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
           onLoggedIn(authData) {
             console.log(authData);
             this.setState({
-              user: authData.user.Username
+              user: authData.user.Username,
+              favoriteMovies: authData.user.FavoriteMovies
             });
           
             localStorage.setItem('token', authData.token);
@@ -72,12 +80,26 @@ export class MainView extends React.Component {
         
 
           render() {
-            const { movies, user } = this.state;
-
+            const { movies, user, favoriteMovies } = this.state;
+console.log('favoriteMovies', favoriteMovies);
            return (
           
               <Router>
-                <div className="main-view, justify-content-md-center">
+
+                <Navbar sticky="top" bg="light" expand="lg">
+                <Container>
+                  <Navbar.Brand href="/">MyFlix</Navbar.Brand>
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                      <Nav.Link href='/'>Movies</Nav.Link>
+                      <Nav.Link href='/profile'>Profile</Nav.Link>
+                    </Nav>
+                  </Navbar.Collapse>
+                </Container>
+              </Navbar>
+                
+                <div className="main-view justify-content-md-center">
                   {/* Main Page or Log In */}
                   <Route exact path="/" render={() => {
                     if (!user) return <Row>
@@ -109,7 +131,7 @@ export class MainView extends React.Component {
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={12}>
                             <ProfileView user={user} setUser={user => this.setUser(user)}
-                                movies={movies} onLoggedOut={() => this.onLoggedOut()} onBackClick={() => history.goBack()}
+                                favoriteMovies={movies.filter(movie => favoriteMovies.includes(movie._id))} onLoggedOut={() => this.onLoggedOut()} onBackClick={() => history.goBack()}
                             />
                         </Col>
                     }} />
@@ -121,7 +143,7 @@ export class MainView extends React.Component {
                       </Col>
                       if (movies.length === 0) return <div className="main-view" />;
                      return <Col md={8}>
-                        <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
+                        <MovieView movie={movies.find(m => m._id === match.params.movieId)} addToFavoriteMovies={this.addToFavoriteMovies} onBackClick={() => history.goBack()} />
                       </Col>
                     }} />
                 

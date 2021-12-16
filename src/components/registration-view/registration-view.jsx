@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-
+import axios from 'axios';
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
@@ -13,7 +13,7 @@ export function RegistrationView(props) {
       e.preventDefault();
       console.log(username, password);
       /* Send a request to the server for authentication */
-      props.handleRegistration(username, email, password, birthday);
+      // props.handleRegistration(username, email, password, birthday);
   
   
     axios.post('https://myflix-kg.herokuapp.com/users', {

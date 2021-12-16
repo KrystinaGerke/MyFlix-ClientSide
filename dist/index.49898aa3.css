@@ -1,12 +1,22 @@
 .card {
   height: 100%;
 }
+
+.col-md-3 {
+  margin: 20px;
+}
 .movie-view {
   text-align: center;
 }
 
 
-
+.btn {
+  margin: 5px;
+}
+.main-view {
+  display: flex;
+  flex-wrap: wrap;
+}
 .my-flix {
   color: steelblue;
 }

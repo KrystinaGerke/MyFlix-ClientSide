@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Modal, Col } from 'react-bootstrap';
 import axios from 'axios';
 import './profile-view.scss';
+import { MovieCard } from '../movie-card/movie-card';
 
 
-export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick }) {
+export function ProfileView({ user, setUser, favoriteMovies, onLoggedOut, onBackClick }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
-
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [error, setError] = useState('')
+
+console.log(user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password);
         /* Send a request to the server for authentication */
-        props.handleRegistration(username);
+        // props.handleRegistration(username);
       };
 const token = localStorage.getItem("token");
 
@@ -49,7 +54,7 @@ const token = localStorage.getItem("token");
             console.error(err)
             });
         }
-const favoriteMovies = props.movies.map(movie => user.FavoriteMovies.includes(movie._id));
+console.log('favoriteMovies', favoriteMovies)
 
 return (
     <Container>
@@ -99,23 +104,29 @@ return (
       </Form.Floating>
       <Button variant="outline-dark" type="submit" onClick={handleSubmit}>Update</Button>
 
-          <Button variant = "outline-danger" onClick={deleteUserHandler}>Deregister</Button>
-    
+          <Button variant = "outline-danger" onClick={handleShow}>Deregister</Button>
+   
           <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>De-Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure you want to permenantly delete your account?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="outline-dark" onClick={handleClose}>
             Whoops-Nevermind
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="outline-danger" onClick={handleDelete}>
             Deregister
           </Button>
         </Modal.Footer>
       </Modal>
 
+    {favoriteMovies.map(m => (
+                      <Col md={3} key={m._id}>
+                        <MovieCard movie={m} />
+                      </Col>
+                    ))
+    }
       </>
     </Container>
 
@@ -124,8 +135,3 @@ return (
 }
 
 
-// function DeleteProfile() {
-//     const [show, setShow] = useState(false);
-  
-//     const handleClose = () => setShow(false);
-//     const handleShow = () => setShow(true);

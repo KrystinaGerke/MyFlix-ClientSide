@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
+import axios from 'axios';
 
 export class MovieView extends React.Component {
 
@@ -18,10 +19,24 @@ export class MovieView extends React.Component {
         document.removeEventListener('keypress', this.keypressCallback);
       }
 
+      movieFavorites=() => {
+        let url = `https://myflix-kg.herokuapp.com/users/${localStorage.getItem('user')}/${this.props.movie._id}`
+        console.log(url);
+        axios.post(url, {}, {
+        headers:{
+         Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+        })
+        .then (item => {
+          this.props.addToFavoriteMovies(this.props.movie._id)
+          console.log(item)}
+        ) 
+        .catch (e => console.error(e))
+      }
+
     render() {
         const { movie, onBackClick } = this.props;
 
-let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
 
     return (
       <Card className="text-center" style={{ width: '18rem' }}>
@@ -35,7 +50,7 @@ let ImageURL= movie.ImageURL?movie.ImageURL:movie.ImagePath;
         <Link to={`/movies/genre/${movie.Genre.Name}`}>
           <Button variant="outline-dark">Genre</Button>{' '}
         </Link>
-        <Button variant="outline-dark" >Add to Favorites</Button>
+        <Button variant="outline-dark" onClick={this.movieFavorites}>Add to Favorites</Button>
         <Button variant="outline-dark" onClick={() => { onBackClick(null); }}>Back</Button>
       </Card.Body>
     </Card>
