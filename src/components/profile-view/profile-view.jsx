@@ -10,6 +10,7 @@ export function ProfileView({ user, setUser, favoriteMovies, onLoggedOut, onBack
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
+    
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -43,7 +44,7 @@ const token = localStorage.getItem("token");
         });
 
     const handleDelete = () => {
-      axios.delete(`https://myflix-kg.herokuapp.com/users/${user.Username}`, {
+      axios.delete(`https://myflix-kg.herokuapp.com/users/${user.Username}/unregister`, {
         headers: { Authorization: `Bearer ${token}` }
             })
             .then(response => {

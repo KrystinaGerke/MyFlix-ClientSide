@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Row, Col, Navbar, Container, Nav } from 'react-bootstrap';
+import { Row, Col, Navbar, Container, Nav, Button } from 'react-bootstrap';
 import './main-view.scss';
 
 import { Link } from 'react-router-dom';
@@ -55,12 +55,14 @@ export class MainView extends React.Component {
             this.getMovies(authData.token);
           }
 
-          //Log our function
+          //Log out function
           onLoggedOut() {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            this.setState({ user: null });
-        }
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            this.setState({
+              user: null,
+            });
+          }
 
 
           getMovies(token) {
@@ -81,21 +83,23 @@ export class MainView extends React.Component {
 
           render() {
             const { movies, user, favoriteMovies } = this.state;
-console.log('favoriteMovies', favoriteMovies);
+
            return (
           
               <Router>
-
-                <Navbar sticky="top" bg="light" expand="lg">
+                <Navbar sticky="top" bg="light">
                 <Container>
-                  <Navbar.Brand href="/">MyFlix</Navbar.Brand>
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                      <Nav.Link href='/'>Movies</Nav.Link>
-                      <Nav.Link href='/profile'>Profile</Nav.Link>
-                    </Nav>
-                  </Navbar.Collapse>
+                <Navbar.Brand>
+                  <Link to={"/"} className="bar">
+                  MyFlix
+                  </Link>
+                  </Navbar.Brand>
+                  <Button variant="outline-secondary" className="bar">
+                    <Link onClick={this.onLoggedOut.bind(this)}>Log Out</Link>
+                  </Button>
+                  <Button variant="outline-secondary" className="bar">
+                    <Link to={`/profile/${user}`}>Profile</Link>
+                  </Button>
                 </Container>
               </Navbar>
                 

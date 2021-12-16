@@ -22807,10 +22807,10 @@ class MainView extends _reactDefault.default.Component {
         localStorage.setItem('user', authData.user.Username);
         this.getMovies(authData.token);
     }
-    //Log our function
+    //Log out function
     onLoggedOut() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
         this.setState({
             user: null
         });
@@ -22831,11 +22831,10 @@ class MainView extends _reactDefault.default.Component {
     }
     render() {
         const { movies , user: user1 , favoriteMovies  } = this.state;
-        console.log('favoriteMovies', favoriteMovies);
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 87,
+                lineNumber: 89,
                 columnNumber: 15
             },
             __self: this,
@@ -22843,78 +22842,77 @@ class MainView extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
                     sticky: "top",
                     bg: "light",
-                    expand: "lg",
                     __source: {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 89,
+                        lineNumber: 90,
                         columnNumber: 17
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
                         __source: {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 90,
+                            lineNumber: 91,
                             columnNumber: 17
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Brand, {
-                                href: "/",
-                                __source: {
-                                    fileName: "src/components/MainView/main-view.jsx",
-                                    lineNumber: 91,
-                                    columnNumber: 19
-                                },
-                                __self: this,
-                                children: "MyFlix"
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Toggle, {
-                                "aria-controls": "basic-navbar-nav",
                                 __source: {
                                     fileName: "src/components/MainView/main-view.jsx",
                                     lineNumber: 92,
-                                    columnNumber: 19
+                                    columnNumber: 17
                                 },
-                                __self: this
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                    to: "/",
+                                    className: "bar",
+                                    __source: {
+                                        fileName: "src/components/MainView/main-view.jsx",
+                                        lineNumber: 93,
+                                        columnNumber: 19
+                                    },
+                                    __self: this,
+                                    children: "MyFlix"
+                                })
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Collapse, {
-                                id: "basic-navbar-nav",
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                variant: "outline-secondary",
+                                className: "bar",
                                 __source: {
                                     fileName: "src/components/MainView/main-view.jsx",
-                                    lineNumber: 93,
+                                    lineNumber: 97,
                                     columnNumber: 19
                                 },
                                 __self: this,
-                                children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
-                                    className: "me-auto",
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                    onClick: this.onLoggedOut.bind(this),
                                     __source: {
                                         fileName: "src/components/MainView/main-view.jsx",
-                                        lineNumber: 94,
+                                        lineNumber: 98,
                                         columnNumber: 21
                                     },
                                     __self: this,
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                            href: "/",
-                                            __source: {
-                                                fileName: "src/components/MainView/main-view.jsx",
-                                                lineNumber: 95,
-                                                columnNumber: 23
-                                            },
-                                            __self: this,
-                                            children: "Movies"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                            href: "/profile",
-                                            __source: {
-                                                fileName: "src/components/MainView/main-view.jsx",
-                                                lineNumber: 96,
-                                                columnNumber: 23
-                                            },
-                                            __self: this,
-                                            children: "Profile"
-                                        })
-                                    ]
+                                    children: "Log Out"
+                                })
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                variant: "outline-secondary",
+                                className: "bar",
+                                __source: {
+                                    fileName: "src/components/MainView/main-view.jsx",
+                                    lineNumber: 100,
+                                    columnNumber: 19
+                                },
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                    to: `/profile/${user1}`,
+                                    __source: {
+                                        fileName: "src/components/MainView/main-view.jsx",
+                                        lineNumber: 101,
+                                        columnNumber: 21
+                                    },
+                                    __self: this,
+                                    children: "Profile"
                                 })
                             })
                         ]
@@ -22924,7 +22922,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 102,
+                        lineNumber: 106,
                         columnNumber: 17
                     },
                     __self: this,
@@ -22953,7 +22951,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 104,
+                                lineNumber: 108,
                                 columnNumber: 19
                             },
                             __self: this
@@ -22971,7 +22969,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 119,
+                                lineNumber: 123,
                                 columnNumber: 19
                             },
                             __self: this
@@ -23003,7 +23001,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 127,
+                                lineNumber: 131,
                                 columnNumber: 19
                             },
                             __self: this
@@ -23032,7 +23030,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 140,
+                                lineNumber: 144,
                                 columnNumber: 19
                             },
                             __self: this
@@ -23059,7 +23057,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 151,
+                                lineNumber: 155,
                                 columnNumber: 19
                             },
                             __self: this
@@ -23086,7 +23084,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 163,
+                                lineNumber: 167,
                                 columnNumber: 19
                             },
                             __self: this
@@ -39923,9 +39921,32 @@ function LoginView(props) {
     _s();
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
+    // Declare hook for each input
+    const [usernameErr, setUsernameErr] = _react.useState('');
+    const [passwordErr, setPasswordErr] = _react.useState('');
+    // validate user inputs
+    const validate = ()=>{
+        let isReq = true;
+        if (!username) {
+            setUsernameErr('Username Required');
+            isReq = false;
+        } else if (username.length < 2) {
+            setUsernameErr('Username must be 2 characters long');
+            isReq = false;
+        }
+        if (!password) {
+            setPasswordErr('Password Required');
+            isReq = false;
+        } else if (password.length < 6) {
+            setPassword('Password must be 6 characters long');
+            isReq = false;
+        }
+        return isReq;
+    };
     const handleSubmit = (e)=>{
         e.preventDefault();
-        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://myflix-kg.herokuapp.com/login', {
+        const isReq = validate();
+        if (isReq) /* Send request to the server for authentication */ _axiosDefault.default.post('https://myflix-kg.herokuapp.com/login', {
             Username: username,
             Password: password
         }).then((response)=>{
@@ -39938,14 +39959,14 @@ function LoginView(props) {
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 28,
+            lineNumber: 56,
             columnNumber: 3
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
             __source: {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 29,
+                lineNumber: 57,
                 columnNumber: 3
             },
             __self: this,
@@ -39955,7 +39976,7 @@ function LoginView(props) {
                     controlId: "formUsername",
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 30,
+                        lineNumber: 58,
                         columnNumber: 5
                     },
                     __self: this,
@@ -39963,7 +39984,7 @@ function LoginView(props) {
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 31,
+                                lineNumber: 59,
                                 columnNumber: 7
                             },
                             __self: this,
@@ -39975,7 +39996,7 @@ function LoginView(props) {
                             ,
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 32,
+                                lineNumber: 60,
                                 columnNumber: 7
                             },
                             __self: this
@@ -39987,7 +40008,7 @@ function LoginView(props) {
                     controlId: "formPassword",
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 35,
+                        lineNumber: 63,
                         columnNumber: 5
                     },
                     __self: this,
@@ -39995,7 +40016,7 @@ function LoginView(props) {
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 36,
+                                lineNumber: 64,
                                 columnNumber: 7
                             },
                             __self: this,
@@ -40007,7 +40028,7 @@ function LoginView(props) {
                             ,
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 37,
+                                lineNumber: 65,
                                 columnNumber: 7
                             },
                             __self: this
@@ -40020,7 +40041,7 @@ function LoginView(props) {
                     onClick: handleSubmit,
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 39,
+                        lineNumber: 67,
                         columnNumber: 5
                     },
                     __self: this,
@@ -40032,7 +40053,7 @@ function LoginView(props) {
                     to: `/users`,
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 42,
+                        lineNumber: 70,
                         columnNumber: 5
                     },
                     __self: this,
@@ -40040,7 +40061,7 @@ function LoginView(props) {
                         variant: "outline-dark",
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 43,
+                            lineNumber: 71,
                             columnNumber: 5
                         },
                         __self: this,
@@ -40051,7 +40072,7 @@ function LoginView(props) {
         })
     }));
 }
-_s(LoginView, "9FY2cPL9VBDmuhjwpF2ik6flsHs=");
+_s(LoginView, "bu3RTtfm4zH8nbQBLPx5pzN3ays=");
 _c = LoginView;
 var _c;
 $RefreshReg$(_c, "LoginView");
@@ -40604,7 +40625,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
         console.log('error updating the user');
     });
     const handleDelete = ()=>{
-        _axiosDefault.default.delete(`https://myflix-kg.herokuapp.com/users/${user.Username}`, {
+        _axiosDefault.default.delete(`https://myflix-kg.herokuapp.com/users/${user.Username}/unregister`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40619,7 +40640,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 60,
+            lineNumber: 61,
             columnNumber: 5
         },
         __self: this,
@@ -40629,7 +40650,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     className: "mb-3",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 62,
+                        lineNumber: 63,
                         columnNumber: 1
                     },
                     __self: this,
@@ -40638,7 +40659,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             htmlFor: "floatingUsernameCustom",
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 63,
+                                lineNumber: 64,
                                 columnNumber: 9
                             },
                             __self: this,
@@ -40653,7 +40674,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             ,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 64,
+                                lineNumber: 65,
                                 columnNumber: 9
                             },
                             __self: this
@@ -40664,7 +40685,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     className: "mb-3",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 73,
+                        lineNumber: 74,
                         columnNumber: 7
                     },
                     __self: this,
@@ -40673,7 +40694,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             htmlFor: "floatingInputCustom",
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 74,
+                                lineNumber: 75,
                                 columnNumber: 7
                             },
                             __self: this,
@@ -40688,7 +40709,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             ,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 75,
+                                lineNumber: 76,
                                 columnNumber: 9
                             },
                             __self: this
@@ -40699,7 +40720,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     className: "mb-3",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 84,
+                        lineNumber: 85,
                         columnNumber: 7
                     },
                     __self: this,
@@ -40708,7 +40729,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             htmlFor: "floatingPasswordCustom",
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 85,
+                                lineNumber: 86,
                                 columnNumber: 7
                             },
                             __self: this,
@@ -40723,7 +40744,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             ,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 86,
+                                lineNumber: 87,
                                 columnNumber: 9
                             },
                             __self: this
@@ -40734,7 +40755,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     className: "mb-3",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 95,
+                        lineNumber: 96,
                         columnNumber: 7
                     },
                     __self: this,
@@ -40743,7 +40764,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             htmlFor: "floatingBirthdayCustom",
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 96,
+                                lineNumber: 97,
                                 columnNumber: 7
                             },
                             __self: this,
@@ -40758,7 +40779,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             ,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 97,
+                                lineNumber: 98,
                                 columnNumber: 9
                             },
                             __self: this
@@ -40771,7 +40792,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     onClick: handleSubmit,
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 105,
+                        lineNumber: 106,
                         columnNumber: 7
                     },
                     __self: this,
@@ -40782,7 +40803,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     onClick: handleShow,
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 107,
+                        lineNumber: 108,
                         columnNumber: 11
                     },
                     __self: this,
@@ -40793,7 +40814,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                     onHide: handleClose,
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 109,
+                        lineNumber: 110,
                         columnNumber: 11
                     },
                     __self: this,
@@ -40802,14 +40823,14 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             closeButton: true,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 110,
+                                lineNumber: 111,
                                 columnNumber: 9
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Modal.Title, {
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 111,
+                                    lineNumber: 112,
                                     columnNumber: 11
                                 },
                                 __self: this,
@@ -40819,7 +40840,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Modal.Body, {
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 113,
+                                lineNumber: 114,
                                 columnNumber: 9
                             },
                             __self: this,
@@ -40828,7 +40849,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Modal.Footer, {
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 114,
+                                lineNumber: 115,
                                 columnNumber: 9
                             },
                             __self: this,
@@ -40838,7 +40859,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                                     onClick: handleClose,
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 115,
+                                        lineNumber: 116,
                                         columnNumber: 11
                                     },
                                     __self: this,
@@ -40849,7 +40870,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                                     onClick: handleDelete,
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 118,
+                                        lineNumber: 119,
                                         columnNumber: 11
                                     },
                                     __self: this,
@@ -40863,7 +40884,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                         md: 3,
                         __source: {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 125,
+                            lineNumber: 126,
                             columnNumber: 23
                         },
                         __self: this,
@@ -40871,7 +40892,7 @@ function ProfileView({ user , setUser , favoriteMovies , onLoggedOut , onBackCli
                             movie: m,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 126,
+                                lineNumber: 127,
                                 columnNumber: 25
                             },
                             __self: this
