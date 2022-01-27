@@ -2,10 +2,11 @@
   "name": "myflix-clientside",
   "version": "1.0.0",
   "description": "",
+  "main": "src/index.html",
   "default": "src/index.html",
   "dependencies": {
     "axios": "^0.24.0",
-    "parcel": "^2.0.1",
+    "parcel": "^2.0.0-rc.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
