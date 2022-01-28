@@ -2,10 +2,14 @@
   "name": "myflix-clientside",
   "version": "1.0.0",
   "description": "",
-  "default": "src/index.html",
+  "source": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "build": "parcel build"
+  },
   "dependencies": {
     "axios": "^0.24.0",
-    "parcel": "^2.0.0-rc.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
@@ -15,6 +19,7 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.1"
+    "@parcel/transformer-sass": "^2.0.1",
+    "parcel": "^2.0.0-rc.0"
   }
 }
